@@ -19,11 +19,12 @@ body = """
 st.markdown(body)
 
 def predict(image):
-    corn_classifier_model = 'saved-model/best_model'
+    IMAGE_RES = (260, 260)
+    corn_classifier_model = 'saved-model-b2/best_model'
     model = load_model(corn_classifier_model, compile=False)
     classes = ['Cercospora Leaf Spot (Gray Leaf Spot)', 'Common Rust', 'Northern Leaf Blight', 'Healthy']
     
-    test_images = image.resize((224, 224))
+    test_images = image.resize(IMAGE_RES)
     test_images = preprocessing.image.img_to_array(test_images)
     test_images = test_images / 255.0
     test_images = np.expand_dims(test_images, axis=0)
@@ -44,21 +45,20 @@ def predict(image):
 
 def main():
     file_upload = st.file_uploader('Select an Image', type=['jpg', 'jpeg', 'png'], accept_multiple_files=True)
-    submit_button = st.button('Upload')
+    submit_button = st.button('Classify')
 
     if file_upload is not None:
         for img in file_upload:
             image = Image.open(img)
-            st.image(image, caption='Image Preview')
-    
-    if submit_button:
-        st.spinner('Ongoing Classification...')
-        plt.imshow(image)
-        plt.axis('off')
-        predictions = predict(image)
-        time.sleep(1)
-        st.success('Image Has Been Classified')
-        st.write(predictions)
+            st.image(image, caption='Image Preview', use_column_width=True)
+            if submit_button:
+                st.spinner('Ongoing Classification...')
+                plt.imshow(image)
+                plt.axis('off')
+                predictions = predict(image)
+                time.sleep(1)
+                st.success('Image Has Been Classified')
+                st.write(predictions)
 
 if __name__ == '__main__':
     main()
