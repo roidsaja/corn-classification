@@ -6,6 +6,8 @@ import streamlit as st
 from tensorflow.keras.models import load_model
 from tensorflow.keras import preprocessing
 from PIL import Image
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import ConfusionMatrixDisplay
 
 st.title('Corn Plant Diseases Classifier')
 
@@ -28,17 +30,22 @@ def predict(image):
     test_images = preprocessing.image.img_to_array(test_images)
     test_images = test_images / 255.0
     test_images = np.expand_dims(test_images, axis=0)
+    print(test_images)
 
     predictions = model.predict(test_images)
     scores = tf.nn.softmax(predictions[0])
+    print(scores)
     scores = scores.numpy()
-
+    print(scores)
     results = {
         'Cercospora Leaf Spot (Gray Leaf Spot)': 0,
         'Common Rust': 0,
         'Northern Leaf Blight': 0,
         'Healthy': 0,
     }
+    cm = confusion_matrix(scores, predictions[0])
+    cm_display = ConfusionMatrixDisplay(cm).plot()
+
     results = f"{classes[np.argmax(scores)]} with a { (100 * np.max(scores)).round(2)} % confidence score."
     return results
 
