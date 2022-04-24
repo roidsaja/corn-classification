@@ -6,6 +6,7 @@ import streamlit as st
 from tensorflow.keras.models import load_model
 from tensorflow.keras import preprocessing
 from PIL import Image
+from pathlib import Path
 
 st.title('Corn Plant Diseases Classifier')
 
@@ -16,7 +17,6 @@ body = """
 3. Common Rust 
 4. Cercospora Leaf Spot (Gray Leaf Spot)
 """
-st.markdown(body)
 
 def predict(image):
     IMAGE_RES = (260, 260)
@@ -47,23 +47,29 @@ def predict(image):
 
 
 def main():
-    file_upload = st.file_uploader('Select an Image', type=['jpg', 'jpeg', 'png'], accept_multiple_files=True)
-    submit_button = st.button('Classify')
+    nav_select = st.sidebar.selectbox('Please select from the following', ['Classifier', 'Model Statistics and Review'])
 
-    st.sidebar.info('')
+    if nav_select == 'Model Statistics and Review':
+        st.sidebar.success('Information are now shown on the right for desktop users.')
+        st.markdown(Path('./Thesis_info.md').read_text())
 
-    if file_upload is not None:
-        for img in file_upload:
-            image = Image.open(img)
-            st.image(image, caption='Image Preview', use_column_width=True)
-            if submit_button:
-                with st.spinner('Ongoing Classification...'):
-                    plt.imshow(image)
-                    plt.axis('off')
-                    predictions = predict(image)
-                    time.sleep(1)
-                st.success('Image Has Been Classified')
-                st.write(predictions)
+    if nav_select == 'Classifier':
+        st.sidebar.success('You can now start classifying!')
+        st.markdown(body)
+        file_upload = st.file_uploader('Select an Image', type=['jpg', 'jpeg', 'png'], accept_multiple_files=True)
+        submit_button = st.button('Classify')
+        if file_upload is not None:
+            for img in file_upload:
+                image = Image.open(img)
+                st.image(image, caption='Image Preview', use_column_width=True)
+                if submit_button:
+                    with st.spinner('Ongoing Classification...'):
+                        plt.imshow(image)
+                        plt.axis('off')
+                        predictions = predict(image)
+                        time.sleep(1)
+                    st.success('Image Has Been Classified')
+                    st.write(predictions)
 
 if __name__ == '__main__':
     main()
