@@ -6,8 +6,6 @@ import streamlit as st
 from tensorflow.keras.models import load_model
 from tensorflow.keras import preprocessing
 from PIL import Image
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import ConfusionMatrixDisplay
 
 st.title('Corn Plant Diseases Classifier')
 
@@ -43,8 +41,6 @@ def predict(image):
         'Northern Leaf Blight': 0,
         'Healthy': 0,
     }
-    cm = confusion_matrix(scores, predictions[0])
-    cm_display = ConfusionMatrixDisplay(cm).plot()
 
     results = f"{classes[np.argmax(scores)]} with a { (100 * np.max(scores)).round(2)} % confidence score."
     return results
@@ -54,16 +50,18 @@ def main():
     file_upload = st.file_uploader('Select an Image', type=['jpg', 'jpeg', 'png'], accept_multiple_files=True)
     submit_button = st.button('Classify')
 
+    st.sidebar.info('')
+
     if file_upload is not None:
         for img in file_upload:
             image = Image.open(img)
             st.image(image, caption='Image Preview', use_column_width=True)
             if submit_button:
-                st.spinner('Ongoing Classification...')
-                plt.imshow(image)
-                plt.axis('off')
-                predictions = predict(image)
-                time.sleep(1)
+                with st.spinner('Ongoing Classification...'):
+                    plt.imshow(image)
+                    plt.axis('off')
+                    predictions = predict(image)
+                    time.sleep(1)
                 st.success('Image Has Been Classified')
                 st.write(predictions)
 
