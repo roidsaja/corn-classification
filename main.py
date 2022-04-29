@@ -8,8 +8,6 @@ from tensorflow.keras import preprocessing
 from PIL import Image
 from pathlib import Path
 
-st.title('Corn Plant Diseases Classifier')
-
 body = """
 ### The corn plant diseases are classified into four different classes: 
 1. Healthy 
@@ -51,9 +49,28 @@ def main():
 
     if nav_select == 'Model Statistics and Review':
         st.sidebar.success('Information are now shown on the right for desktop users.')
-        st.markdown(Path('./Thesis_info.md').read_text())
+        st.title('Model Insights')
+
+        st.header('Dataset')
+        st.write("""
+        The dataset used in this application is widely accesible on Kaggle 
+        at (https://www.kaggle.com/datasets/abdallahalidev/plantvillage-dataset)""")
+
+        st.header('Data Augmentation')
+        st.image('assets/Augmented Images Preview.png', caption='Some preview of training data being augmented')
+        st.image('assets/Distribution of Data.png', caption='Distribution of corn plant diseases from Plant Village dataset')
+
+        st.header('EfficientNet-B2')
+        col1, col2 = st.columns(2)
+        col1.image('assets/B2 Model Accuracy Plot History.png', caption='Accuracy Evolution Plot')
+        col2.image('assets/B2 Model Loss Plot History.png', caption='Loss Evolution Plot')
+
+        st.header('Confusion Matrix')
+        st.image('assets/Confusion Matrix Model B2.png')
+
 
     if nav_select == 'Classifier':
+        st.title('Corn Plant Diseases Classifier')
         st.sidebar.success('You can now start classifying!')
         st.markdown(body)
         file_upload = st.file_uploader('Select an Image', type=['jpg', 'jpeg', 'png'], accept_multiple_files=True)
