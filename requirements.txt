@@ -25,16 +25,6 @@ charset-normalizer==2.0.9
 Click==7.0
 commonmark==0.9.1
 cryptography==2.8
-cupshelpers==1.0
-cycler==0.10.0
-dbus-python==1.2.16
-debugpy==1.5.1
-decorator==4.4.2
-defer==1.0.6
-defusedxml==0.7.1
-dictdiffer==0.9.0
-distlib==0.3.0
-distro==1.4.0
 docutils==0.18.1
 duplicity==0.8.12.0
 efficientnet==1.1.1
