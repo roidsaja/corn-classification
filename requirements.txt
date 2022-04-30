@@ -23,8 +23,6 @@ cffi==1.15.0
 chardet==3.0.4
 charset-normalizer==2.0.9
 Click==7.0
-colorama==0.4.3
-command-not-found==0.3
 commonmark==0.9.1
 cryptography==2.8
 cupshelpers==1.0
