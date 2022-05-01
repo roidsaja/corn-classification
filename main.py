@@ -14,6 +14,11 @@ body = """
 2. Northern Leaf Blight 
 3. Common Rust 
 4. Cercospora Leaf Spot (Gray Leaf Spot)
+
+To get you started, you can use this image as an example by simply saving it into your device:
+![image](https://cals.cornell.edu/sites/default/files/styles/three_card_callout/public/2021-02/nclb1-10.11-400x267.gif?h=a61266fd&itok=5AsTXLd_)
+
+[image source](https://cals.cornell.edu/field-crops/corn/diseases-corn/northern-corn-leaf-blight)
 """
 
 def predict(image):
@@ -73,7 +78,7 @@ def main():
         st.title('Corn Plant Diseases Classifier')
         st.sidebar.success('You can now start classifying!')
         st.markdown(body)
-        file_upload = st.file_uploader('Select an Image', type=['jpg', 'jpeg', 'png'], accept_multiple_files=True)
+        file_upload = st.file_uploader('Select an Image', type=['jpg', 'jpeg', 'png', 'gif'], accept_multiple_files=True)
         submit_button = st.button('Classify')
         if file_upload is not None:
             for img in file_upload:
