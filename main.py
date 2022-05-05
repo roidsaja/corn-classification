@@ -16,9 +16,9 @@ body = """
 4. Cercospora Leaf Spot (Gray Leaf Spot)
 
 To get you started, you can use this image as an example by simply saving it into your device:
-![image](https://cals.cornell.edu/sites/default/files/styles/three_card_callout/public/2021-02/nclb1-10.11-400x267.gif?h=a61266fd&itok=5AsTXLd_)
+![image](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.N6mOMJ1HNBwMbii6QoexjgHaFj%26pid%3DApi&f=1)
 
-[image source](https://cals.cornell.edu/field-crops/corn/diseases-corn/northern-corn-leaf-blight)
+[image source](https://www.ipmimages.org/browse/detail.cfm?imgnum=5465609)
 """
 
 def predict(image):
@@ -63,7 +63,7 @@ def main():
 
         st.header('Data Augmentation')
         st.image('assets/Augmented Images Preview.png', caption='Some preview of training data being augmented')
-        st.image('assets/Distribution of Data.png', caption='Distribution of corn plant diseases from Plant Village dataset')
+        st.image('assets/Distribution of Data.png', caption='Distribution of corn plant diseases training data')
 
         st.header('EfficientNet-B0')
         col1, col2 = st.columns(2)
@@ -72,6 +72,8 @@ def main():
 
         st.header('Confusion Matrix')
         st.image('assets/Confusion Matrix Model B0.png')
+
+        st.write('Survey Form: https://forms.gle/HFXHdhTN2K9oSnSM6')
 
 
     if nav_select == 'Classifier':
