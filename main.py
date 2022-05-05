@@ -22,8 +22,8 @@ To get you started, you can use this image as an example by simply saving it int
 """
 
 def predict(image):
-    IMAGE_RES = (260, 260)
-    corn_classifier_model = 'saved-model-b2/best_model'
+    IMAGE_RES = (224, 224)
+    corn_classifier_model = 'saved-model/best_model'
     model = load_model(corn_classifier_model, compile=False)
     classes = ['Cercospora Leaf Spot (Gray Leaf Spot)', 'Common Rust', 'Northern Leaf Blight', 'Healthy']
     
@@ -65,13 +65,13 @@ def main():
         st.image('assets/Augmented Images Preview.png', caption='Some preview of training data being augmented')
         st.image('assets/Distribution of Data.png', caption='Distribution of corn plant diseases from Plant Village dataset')
 
-        st.header('EfficientNet-B2')
+        st.header('EfficientNet-B0')
         col1, col2 = st.columns(2)
-        col1.image('assets/B2 Model Accuracy Plot History.png', caption='Accuracy Evolution Plot')
-        col2.image('assets/B2 Model Loss Plot History.png', caption='Loss Evolution Plot')
+        col1.image('assets/B0 Model Accuracy Plot History.png', caption='Accuracy Evolution Plot')
+        col2.image('assets/B0 Model Loss Plot History.png', caption='Loss Evolution Plot')
 
         st.header('Confusion Matrix')
-        st.image('assets/Confusion Matrix Model B2.png')
+        st.image('assets/Confusion Matrix Model B0.png')
 
 
     if nav_select == 'Classifier':
