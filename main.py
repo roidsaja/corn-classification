@@ -31,11 +31,11 @@ def predict(image):
     test_images = preprocessing.image.img_to_array(test_images)
     test_images = test_images / 255.0
     test_images = np.expand_dims(test_images, axis=0)
-    print(test_images)
+    # print(test_images)
 
     predictions = model.predict(test_images)
     scores = tf.nn.softmax(predictions[0])
-    print(scores)
+    # print(scores)
     scores = scores.numpy()
     print(scores)
     results = {
