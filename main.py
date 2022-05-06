@@ -15,6 +15,10 @@ body = """
 3. Common Rust 
 4. Cercospora Leaf Spot (Gray Leaf Spot)
 
+Each image will have its own classification process and will include descriptions about 
+the disease's facts, symptoms and strategies to handle them. The sources to these descriptions were 
+all extracted from [CALS Cornell website](https://cals.cornell.edu/field-crops/corn/diseases-corn).
+
 To get you started, you can use this gray leaf spot image as an example by simply saving it into your device:
 ![image](https://cropwatch.unl.edu/2018-CW-News/2018-images/Disease/corn-gray-leaf-spot-backlit-2.jpg)
 
@@ -158,6 +162,7 @@ def main():
         st.title('Corn Plant Diseases Classifier')
         st.sidebar.success('You can now start classifying!')
         st.markdown(body)
+        st.warning('It will take some time to classify, so please be patient.')
         file_upload = st.file_uploader('Select an Image', type=['jpg', 'jpeg', 'png', 'gif'], accept_multiple_files=True)
         submit_button = st.button('Classify')
         if file_upload is not None:
