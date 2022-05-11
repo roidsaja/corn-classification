@@ -19,10 +19,12 @@ Each image will have its own classification process and will include description
 the disease's facts, symptoms and strategies to handle them. The sources to these descriptions were 
 all extracted from [CALS Cornell website](https://cals.cornell.edu/field-crops/corn/diseases-corn).
 
-To get you started, you can use this gray leaf spot image as an example by simply saving it into your device:
-![image](https://cropwatch.unl.edu/2018-CW-News/2018-images/Disease/corn-gray-leaf-spot-backlit-2.jpg)
+To get you started, you can use these images to test it by simply saving it into your device:
 
-[image source](https://cropwatch.unl.edu/2018/differentiating-corn-leaf-diseases)
+- [Gray Leaf Spot](https://cropwatch.unl.edu/2018-CW-News/2018-images/Disease/corn-gray-leaf-spot-backlit-2.jpg)
+- [North Leaf Blight](https://cals.cornell.edu/sites/default/files/styles/three_card_callout/public/2021-02/nclb2-10.11-250x376.gif?h=2aff6ec4&itok=VfogYnLk)
+
+Image sources : [CALS Cornell website](https://cals.cornell.edu/field-crops/corn/diseases-corn) and [Cropwatch UNL website](https://cropwatch.unl.edu/2018/differentiating-corn-leaf-diseases)
 """
 
 def predict(image):
