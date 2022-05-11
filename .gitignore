@@ -1,4 +1,6 @@
-data/raw
+/new-plant-diseases-dataset
+/corn_data
 venv/
 .ipynb_checkpoints
 mac-env/
+kaggle.json
