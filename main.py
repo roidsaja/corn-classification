@@ -26,7 +26,7 @@ To get you started, you can use these images to test it by simply saving it into
 
 Image sources : [CALS Cornell website](https://cals.cornell.edu/field-crops/corn/diseases-corn) and [Cropwatch UNL website](https://cropwatch.unl.edu/2018/differentiating-corn-leaf-diseases)
 """
-@st.experimental_memo
+@st.experimental_memo(suppress_st_warning=True)
 def predict(_image):
     IMAGE_RES = (224, 224)
     corn_classifier_model = 'saved-model/best_model'
