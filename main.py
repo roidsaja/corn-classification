@@ -139,7 +139,7 @@ def main():
     nav_select = st.sidebar.selectbox('Please select from the following', ['Classifier', 'Model Statistics and Review'])
     clear_cache_button = st.button('Clear Cache')
 
-    if st.button('Clear Cache'):
+    if clear_cache_button:
         st.experimental_memo.clear()
 
     if nav_select == 'Model Statistics and Review':
