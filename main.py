@@ -31,7 +31,7 @@ def predict(_image):
     IMAGE_RES = (224, 224)
     corn_classifier_model = 'saved-model/best_model'
     model = load_model(corn_classifier_model, compile=False)
-    classes = ['Cercospora Leaf Spot (Gray Leaf Spot)', 'Common Rust', 'Northern Leaf Blight', 'Healthy']
+    classes = ['Cercospora Leaf Spot (Gray Leaf Spot)', 'Common Rust', 'Healthy', 'Northern Leaf Blight']
     
     test_images = _image.resize(IMAGE_RES)
     test_images = preprocessing.image.img_to_array(test_images)
@@ -47,8 +47,8 @@ def predict(_image):
     results = {
         'Cercospora Leaf Spot (Gray Leaf Spot)': 0,
         'Common Rust': 0,
-        'Northern Leaf Blight': 0,
         'Healthy': 0,
+        'Northern Leaf Blight': 0
     }
 
     results = f"{classes[np.argmax(scores)]} with a { (100 * np.max(scores)).round(2)} % confidence score."
@@ -137,10 +137,6 @@ def predict(_image):
 def main():
     st.sidebar.info('Survey Form: https://forms.gle/HFXHdhTN2K9oSnSM6')
     nav_select = st.sidebar.selectbox('Please select from the following', ['Classifier', 'Model Statistics and Review'])
-    clear_cache_button = st.button('Clear Cache')
-
-    if clear_cache_button:
-        st.experimental_memo.clear()
 
     if nav_select == 'Model Statistics and Review':
         st.sidebar.success('Information are now shown on the right for desktop users.')
@@ -177,13 +173,15 @@ def main():
                 st.markdown('----')
                 st.image(image, caption='Image Preview', use_column_width=True)
                 if submit_button:
-                    with st.spinner('Ongoing Classification...'):
+                    with st.spinner('Generating Informative Descriptions...'):
                         plt.imshow(image)
                         plt.axis('off')
                         predictions = predict(image)
                         time.sleep(1)
                     st.success('Image Has Been Classified')
                     st.write(predictions)
+        
+        st.experimental_memo.clear()
 
 if __name__ == '__main__':
     main()
