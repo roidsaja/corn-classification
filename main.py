@@ -22,9 +22,9 @@ all extracted from [CALS Cornell website](https://cals.cornell.edu/field-crops/c
 To get you started, you can use these images to test it by simply saving it into your device:
 
 - [Gray Leaf Spot](https://cropwatch.unl.edu/2018-CW-News/2018-images/Disease/corn-gray-leaf-spot-backlit-2.jpg)
-- [Common Rust](http://site.extension.uga.edu/plowpoints/files/2016/05/2016-Common-Rust-Mictchell-County.jpg)
+- [Healthy](https://static2.bigstockphoto.com/8/6/1/large2/168470984.jpg)
 
-Image sources : [UGA Cooperative website](https://site.extension.uga.edu/plowpoints/2016/05/phosphorus-deficiency-in-corn-and-may-2016-corn-disease-update/) and [Cropwatch UNL website](https://cropwatch.unl.edu/2018/differentiating-corn-leaf-diseases)
+Image sources : [Bigstockphoto website](https://www.bigstockphoto.com/image-168470984/stock-photo-healthy-green-corn-leaves-growing-in-orchard-planting-corn-summer-corn-plant-image) and [Cropwatch UNL website](https://cropwatch.unl.edu/2018/differentiating-corn-leaf-diseases)
 """
 @st.experimental_memo(suppress_st_warning=True)
 def predict(_image):
