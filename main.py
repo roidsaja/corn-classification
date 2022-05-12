@@ -26,7 +26,7 @@ To get you started, you can use these images to test it by simply saving it into
 
 Image sources : [CALS Cornell website](https://cals.cornell.edu/field-crops/corn/diseases-corn) and [Cropwatch UNL website](https://cropwatch.unl.edu/2018/differentiating-corn-leaf-diseases)
 """
-
+@st.experimental_memo
 def predict(image):
     IMAGE_RES = (224, 224)
     corn_classifier_model = 'saved-model/best_model'
@@ -137,6 +137,10 @@ def predict(image):
 def main():
     st.sidebar.info('Survey Form: https://forms.gle/HFXHdhTN2K9oSnSM6')
     nav_select = st.sidebar.selectbox('Please select from the following', ['Classifier', 'Model Statistics and Review'])
+    clear_cache_button = st.button('Clear Cache')
+
+    if st.button('Clear Cache'):
+        st.experimental_memo.clear()
 
     if nav_select == 'Model Statistics and Review':
         st.sidebar.success('Information are now shown on the right for desktop users.')
