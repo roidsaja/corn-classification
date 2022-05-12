@@ -180,8 +180,6 @@ def main():
                         time.sleep(1)
                     st.success('Image Has Been Classified')
                     st.write(predictions)
-        
-        st.experimental_memo.clear()
-
+                    predict.clear()
 if __name__ == '__main__':
     main()
