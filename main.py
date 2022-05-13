@@ -149,7 +149,7 @@ def main():
         st.header('Dataset')
         st.write("""
         The dataset used in this application is widely accesible on Kaggle 
-        at (https://www.kaggle.com/datasets/abdallahalidev/plantvillage-dataset)""")
+        at (https://www.kaggle.com/datasets/vipoooool/new-plant-diseases-dataset)""")
 
         st.header('Data Augmentation')
         st.image('assets/Augmented Images Preview.png', caption='Some preview of training data being augmented')
