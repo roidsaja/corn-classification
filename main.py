@@ -26,11 +26,15 @@ To get you started, you can use these images to test it by simply saving it into
 
 Image sources : [Bigstockphoto website](https://www.bigstockphoto.com/image-168470984/stock-photo-healthy-green-corn-leaves-growing-in-orchard-planting-corn-summer-corn-plant-image) and [Cropwatch UNL website](https://cropwatch.unl.edu/2018/differentiating-corn-leaf-diseases)
 """
+
+@st.experimental_memo(suppress_st_warning=True)
+def load_effinet_model():
+    return load_model('saved-model/best_model', compile=False)
+
 @st.experimental_memo(suppress_st_warning=True)
 def predict(_image):
     IMAGE_RES = (224, 224)
-    corn_classifier_model = 'saved-model/best_model'
-    model = load_model(corn_classifier_model, compile=False)
+    model = load_effinet_model()
     classes = ['Cercospora Leaf Spot (Gray Leaf Spot)', 'Common Rust', 'Healthy', 'Northern Leaf Blight']
     
     test_images = _image.resize(IMAGE_RES)
@@ -180,6 +184,7 @@ def main():
                         time.sleep(1)
                     st.success('Image Has Been Classified')
                     st.write(predictions)
-                    predict.clear()
+                predict.clear()
+
 if __name__ == '__main__':
     main()
