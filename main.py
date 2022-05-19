@@ -9,7 +9,7 @@ from PIL import Image
 from pathlib import Path
 
 body = """
-### The corn plant diseases are classified into four different classes: 
+#### The corn plant diseases are classified into four different classes: 
 1. Healthy 
 2. Northern Leaf Blight 
 3. Common Rust 
@@ -19,7 +19,9 @@ Each image will have its own classification process and will include description
 the disease's facts, symptoms and strategies to handle them. The sources to these descriptions were 
 all extracted from [CALS Cornell website](https://cals.cornell.edu/field-crops/corn/diseases-corn).
 
-To get you started, you can use these images to test it by simply saving it into your device:
+----
+
+To get you started, you can use these images by simply saving them in to your device:
 
 - [Gray Leaf Spot](https://cropwatch.unl.edu/2018-CW-News/2018-images/Disease/corn-gray-leaf-spot-backlit-2.jpg)
 - [Healthy](https://static2.bigstockphoto.com/8/6/1/large2/168470984.jpg)
@@ -140,11 +142,11 @@ def predict(_image):
 
 def main():
     st.sidebar.info('Survey Form: https://forms.gle/HFXHdhTN2K9oSnSM6')
-    nav_select = st.sidebar.selectbox('Please select from the following', ['Classifier', 'Model Statistics and Review'])
+    nav_select = st.sidebar.selectbox('Please select from the following', ['Classifier', 'Model Observation'])
 
-    if nav_select == 'Model Statistics and Review':
+    if nav_select == 'Model Observation':
         st.sidebar.success('Information are now shown on the right for desktop users.')
-        st.title('Model Insights')
+        st.title('Model Observation')
 
         st.header('Dataset')
         st.write("""
@@ -155,7 +157,7 @@ def main():
         st.image('assets/Augmented Images Preview.png', caption='Some preview of training data being augmented')
         st.image('assets/Distribution of Data.png', caption='Distribution of corn plant diseases training data')
 
-        st.header('EfficientNet-B0')
+        st.header('Accuracy/Loss Evolution Diagram')
         col1, col2 = st.columns(2)
         col1.image('assets/B0 Model Accuracy Plot History.png', caption='Accuracy Evolution Plot')
         col2.image('assets/B0 Model Loss Plot History.png', caption='Loss Evolution Plot')
@@ -163,8 +165,27 @@ def main():
         st.header('Confusion Matrix')
         st.image('assets/Confusion Matrix Model B0.png')
 
+        st.header('F1 Score')
+        st.json("""
+        {
+            "class_names": {
+                "0":"Cercospora_leaf_spot Gray_leaf_spot",
+                "1":"Common_rust",
+                "2":"Healthy",
+                "3":"Northern_leaf_blight"
+            },
+            "f1_score": {
+                "0":0.9098901099,
+                "1":0.9896551724,
+                "2":0.9946140036,
+                "3":0.931147541
+            }
+        }
+        """)
+
 
     if nav_select == 'Classifier':
+        st.image('https://lh6.googleusercontent.com/IAEZeENIV4OSJfsqactork2S-iNtZpPJ7PMLKaENxaobSgdsYEDVemgCjbDKgvSEuj7W0xZS0UW0PJHuYDl_cJsL6mDIxywSWORksAEq6dDKAE1BTMgG9Oy7jnwTtZkFpQ=w1436')
         st.title('Corn Plant Diseases Classifier')
         st.sidebar.success('You can now start classifying!')
         st.markdown(body)
