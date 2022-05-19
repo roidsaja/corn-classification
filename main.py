@@ -153,8 +153,9 @@ def main():
         The dataset used in this application is widely accesible on Kaggle 
         at (https://www.kaggle.com/datasets/vipoooool/new-plant-diseases-dataset)""")
 
-        st.header('Data Augmentation')
-        st.image('assets/Augmented Images Preview.png', caption='Some preview of training data being augmented')
+        st.header('Data Preprocessing')
+        st.image('assets/Original Images Preview.png', caption='Before Data Augmentation')
+        st.image('assets/Augmented Images Preview.png', caption='After Data Augmentation')
         st.image('assets/Distribution of Data.png', caption='Distribution of corn plant diseases training data')
 
         st.header('Accuracy/Loss Evolution Diagram')
@@ -167,20 +168,7 @@ def main():
 
         st.header('F1 Score')
         st.json("""
-        {
-            "class_names": {
-                "0":"Cercospora_leaf_spot Gray_leaf_spot",
-                "1":"Common_rust",
-                "2":"Healthy",
-                "3":"Northern_leaf_blight"
-            },
-            "f1_score": {
-                "0":0.9098901099,
-                "1":0.9896551724,
-                "2":0.9946140036,
-                "3":0.931147541
-            }
-        }
+        {"class_names":{"0":"Cercospora_leaf_spot Gray_leaf_spot","1":"Common_rust","2":"Healthy","3":"Northern_leaf_blight"},"f1_score":{"0":0.875,"1":0.9826989619,"2":0.9891696751,"3":0.9003215434}}
         """)
 
 
