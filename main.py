@@ -30,13 +30,9 @@ Image sources : [Bigstockphoto website](https://www.bigstockphoto.com/image-1684
 """
 
 @st.experimental_memo(suppress_st_warning=True)
-def load_effinet_model():
-    return load_model('saved-model/best_model', compile=False)
-
-@st.experimental_memo(suppress_st_warning=True)
 def predict(_image):
     IMAGE_RES = (224, 224)
-    model = load_effinet_model()
+    model = load_model('saved-model/best_model', compile=False)
     classes = ['Cercospora Leaf Spot (Gray Leaf Spot)', 'Common Rust', 'Healthy', 'Northern Leaf Blight']
     
     test_images = _image.resize(IMAGE_RES)

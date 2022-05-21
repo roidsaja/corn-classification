@@ -1,1 +1,1 @@
-{"class_names":{"0":"Cercospora_leaf_spot Gray_leaf_spot","1":"Common_rust","2":"Healthy","3":"Northern_leaf_blight"},"f1_score":{"0":0.875,"1":0.9826989619,"2":0.9891696751,"3":0.9003215434}}
+{"class_names":{"0":"Cercospora_leaf_spot Gray_leaf_spot","1":"Common_rust","2":"Healthy","3":"Northern_leaf_blight"},"f1_score":{"0":0.9625,"1":0.9846153846,"2":1.0,"3":0.9743589744}}
