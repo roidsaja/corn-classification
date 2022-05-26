@@ -4,3 +4,4 @@ venv/
 .ipynb_checkpoints
 mac-env/
 kaggle.json
+.DS_Store

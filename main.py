@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
 import tensorflow as tf
 import time
 import requests
@@ -7,7 +6,6 @@ import streamlit as st
 
 from io import BytesIO
 from tensorflow.keras.models import load_model
-from tensorflow.keras import preprocessing
 from PIL import Image
 
 
@@ -176,7 +174,7 @@ def main():
 
 
     if nav_select == 'Classifier':
-        st.image('https://lh6.googleusercontent.com/IAEZeENIV4OSJfsqactork2S-iNtZpPJ7PMLKaENxaobSgdsYEDVemgCjbDKgvSEuj7W0xZS0UW0PJHuYDl_cJsL6mDIxywSWORksAEq6dDKAE1BTMgG9Oy7jnwTtZkFpQ=w1436')
+        st.image('assets/corn-plant-diseases-list.png')
         st.title('Corn Plant Diseases Classifier')
         st.sidebar.success('You can now start classifying!')
         st.markdown(body)
