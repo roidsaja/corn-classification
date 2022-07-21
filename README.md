@@ -1,7 +1,3 @@
-# WEB-BASED UTILITY FOR THE CLASSIFICATION OF CORN PLANT DISEASES USING PRE-TRAINED DEEP LEARNING ARCHITECTURE
-
-A thesis prototype project for IULI in determining a corn plant disease by the use of state-of-the-art architecture called EfficientNet. This repository is a sign of progression in developing the prototype before it will be released out into the open public for real world uses.
-
 # Setup
 1. Activate the virtualenv **venv** by inserting the following:
     ```
